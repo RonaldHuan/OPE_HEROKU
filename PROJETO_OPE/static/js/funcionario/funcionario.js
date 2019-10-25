@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     var csrftoken = $("[name=csrfmiddlewaretoken]").val();
     let tabela_cliente=$("#tabela_cliente");
-    console.log(tabela_cliente);
+    
 	  tabela_cliente.DataTable({
     ajax: '/clientes/index',
     columns:[
@@ -13,8 +13,9 @@ $(document).ready(function(){
       {"data":'endereco','name':'endereco'},
       {"data":'telefone','name':'telefone'},
       {"data":'sexo','name':'sexo'},
-      {'data':'id',"name":'id'},
-            ],
+      {"data":'dt_nascimento','name':'dt_nascimento'},
+      
+    ],
       "language": {
          "search": "Pesquisar:",
          'EmptyTable':"sem registro",
@@ -30,7 +31,7 @@ $(document).ready(function(){
 	 buttons: true,
      buttons:    [{extend: 'excel', text:'Excel',class:'btn btn-default'},{extend: 'csv', text:'CSV',class:'btn btn-warning'}],
      "columnDefs": [ {
-        "targets": [7],
+        "targets": [8],
         Width: '150px',
         'orderning': false,
         "render":function(data,type,row){
@@ -52,6 +53,7 @@ $(document).ready(function(){
     ]
     });
 
+    console.log(tabela_cliente);
 
   $("#edit_cliente").click(function(){
     $.ajax({
@@ -91,11 +93,6 @@ $(document).ready(function(){
 
   })
 });
-
-
-
-
-
 
 
     $("#destroy_cliente").click(function(){
@@ -142,12 +139,12 @@ $(document).ready(function(){
     //   funcao para mostrar os botoes  excluir e editar na tela
     var gerenciamento = function(data,type,row){
 
-        return ("<div class ='row'>"+
-        "<div class ='col-md-12 d-flex'>"+
-        "<div class='col-md-4'><button class='btn btn-outline-dark' id='editar_cliente' idd='"+row.id+"'>EDITAR</button></div>"+
-        "<div class='col-md-6'><button class='btn btn-dark' id='excluir_cliente' idd='"+row.id+"'>DELETAR</button></div>"+
-        "</div>"+
-        "</div>");
+         return ("<div class ='row'>"+
+          "<div class ='col-md-12 d-flex'>"+
+          "<div class='col-md-4'><button class='btn btn-outline-dark' id='editar_cliente' idd='"+row.id+"'>EDITAR</button></div>"+
+          "<div class='col-md-6'><button class='btn btn-dark' id='excluir_cliente' idd='"+row.id+"'>DELETAR</button></div>"+
+          "</div>"+
+          "</div>");
     }
 
 
@@ -160,6 +157,7 @@ $(document).ready(function(){
     $("input[name='cpf_cliente']").val('');
     $("input[name='endereco_cliente']").val('');
     $("input[name='telefone_cliente]").val('');
+    $("input[name='nascimento_cliente']").val('');
   });
     $('#cadastra_cliente').click(function(){
          $.ajax({
@@ -176,6 +174,7 @@ $(document).ready(function(){
              $("input[name='cpf_cliente']").val('');
              $("input[name='endereco_cliente']").val('');
              $("input[name='telefone_cliente]").val('');
+             $("input[name='nascimento_cliente']").val('');
 
               const Toast = Swal.mixin({
                 toast: true,
@@ -220,6 +219,7 @@ $(document).on('click','#editar_cliente',function(){
       $("#Editar_cliente input[name='cpf_cliente_edit']").val(data.data[0]['cpf']);
       $("#Editar_cliente input[name='endereco_cliente_edit']").val(data.data[0]['endereco']);
       $("#Editar_cliente input[name='telefone_cliente_edit']").val(data.data[0]['telefone']);
+      $("#Editar_cliente input[name='data_cliente_edit']").val(data.data[0]['dt_nascimento']);
       $("#Editar_cliente #edit_cliente").attr('idd',data.data[0]['id'])
       $("#Editar_cliente").modal()
     },

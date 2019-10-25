@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link href="{% static 'vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/css/image.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/vector-map/jqvmap.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/jvectormap/jquery-jvectormap-2.0.2.css' %}">
@@ -39,7 +40,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="#">Lylli Shoes</a>
+                <span id="nlylli"><a class="navbar-brand" href="#">Lylli Shoes</a></span>
                 <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
@@ -180,10 +181,11 @@
     <script src="{% static 'vendor/charts/sparkline/spark-js.js'%}"></script>
      <!-- dashboard sales js-->
     <script src="{% static 'libs/js/dashboard-sales.js'%}"></script>
-        <script src="{% static 'js/atendente/atendente.js'%}"></script>
-        <script src="{% static 'js/funcionario/funcionario.js'%}"></script>
-        <script src="{% static 'js/produto/produto.js'%}"></script>
-        <script src="{% static 'js/pedido/pedido.js'%}"></script>
+    <script src="{% static 'js/atendente/atendente.js'%}"></script>
+    <script src="{% static 'js/funcionario/funcionario.js'%}"></script>
+    <script src="{% static 'js/produto/produto.js'%}"></script>
+    <script src="{% static 'js/pedido/pedido.js'%}"></script>
+    <script src="{% static 'js/cliente/main.js'%}"></script>
 </body>
 
 </html>

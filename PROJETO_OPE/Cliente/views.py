@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse,HttpResponseNotFound
 from .models import Cliente
-
 from django.forms.models import model_to_dict
 import requests
 from django.core import serializers
@@ -20,6 +19,7 @@ class ViewCliente():
             cliente_endereco= dados['endereco_cliente']
             cliente_telefone = dados['telefone_cliente']
             cliente_cep = dados['cliente_cep']
+            cliente_nascimento = dados['nascimento_cliente']
             cliente_sexo = dados['sexo']
 
             contador = Cliente.objects.filter(nome = cliente_nome , cpf = cliente_cpf).count()
@@ -33,25 +33,22 @@ class ViewCliente():
             cep=cliente_cep,
             telefone=cliente_telefone,
             email=cliente_email,
+            dt_nascimento=cliente_nascimento,
             sexo = cliente_sexo,
             )
             cliente.save()
 
             return JsonResponse({'menssagem':'Cliente Cadastrado com sucesso'},content_type="application/json",status=200)
 
-
-
-
     def index(request):
         if request.method == 'GET':
             dados_bruto = serializers.serialize('python', Cliente.objects.all())
             clientes = []
             for dado in dados_bruto:
-                cliente =   dado['fields']
+                cliente = dado['fields']
                 cliente['id'] = dado['pk']
                 clientes.append(cliente.copy())
                 cliente.clear()
-
             return JsonResponse({'data':clientes},content_type="application/json",status=200,safe=False)
 
     def destroy(request, id):
@@ -75,6 +72,7 @@ class ViewCliente():
             cliente_telefone = dados['telefone_cliente_edit']
             cliente_cep = dados['cliente_cep_edit']
             cliente_sexo = dados['sexo_edit']
+            cliente_nascimento = dados['data_cliente_edit']
             contador = Cliente.objects.filter(cpf = cliente_cpf).count()
             contador_cliente = Cliente.objects.filter(cpf = cliente_cpf,pk= id).count()
             if(contador > 0 and contador_cliente == 0):
@@ -86,6 +84,7 @@ class ViewCliente():
             cliente.telefone=cliente_telefone
             cliente.nome=cliente_nome
             cliente.sexo=cliente_sexo
+            cliente.dt_nascimento=cliente_nascimento
             cliente.save()
             return JsonResponse({'menssagem':f'Cliente  {cliente.nome} Atualizado com sucesso'},content_type="application/json",status=200)
         return HttpResponseNotFound('Erro interno')

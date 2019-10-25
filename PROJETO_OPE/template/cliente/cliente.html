@@ -34,7 +34,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend">...</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Informe o CPF"name='cpf_cliente' aria-describedby="inputGroupPrepend" required="" maxlength="11">
+        <input type="text" class="form-control" oninput="mascaraCpf(this)" id="validationCustomUsername" placeholder="Informe o CPF"name='cpf_cliente' aria-describedby="inputGroupPrepend" required="" maxlength="11">
         <div class="invalid-feedback">
             Por vafor digite um cpf
         </div>
@@ -47,7 +47,6 @@
             <span class="input-group-text" id="inputGroupPrepend">...</span>
         </div>
         <input type="text" class="form-control" id="validationCustomUsername" name='endereco_cliente' placeholder="Informe o endereço" aria-describedby="inputGroupPrepend">
-
     </div>
 </div>
 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -56,7 +55,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend">...</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" name='telefone_cliente' placeholder="Informe o telefone" aria-describedby="inputGroupPrepend" maxlength="11">
+        <input type="text" class="form-control" oninput="mascaraTel(this)" id="validationCustomUsername" name='telefone_cliente' placeholder="Informe o telefone" aria-describedby="inputGroupPrepend" maxlength="11">
 
     </div>
 </div>
@@ -66,7 +65,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend">...</span>
         </div>
-        <input type="text" class="form-control" id="cliente_cep" name="cliente_cep" placeholder="Informe o CEP" aria-describedby="inputGroupPrepend" maxlength="8">
+        <input type="text" class="form-control" oninput="mascaraCep(this)" id="cliente_cep" name="cliente_cep" placeholder="Informe o CEP" aria-describedby="inputGroupPrepend" maxlength="8">
 
     </div>
 </div>
@@ -80,10 +79,22 @@
                 <option>Selecione um sexo</option>
                 <option value='1'> Masculino</option>
                 <option value='0'>Feminino</option>
-                                                            </select>
-
+            </select>
         </div>
     </div>
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <label for="validationCustomUsername">DATA DE NASCIMENTO</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupPrepend">...</span>
+        </div>
+        <input type="text" class="form-control" oninput="mascaraData(this)" id="validationCustomUsername" placeholder="Informe a data de nascimento" name='nascimento_cliente' aria-describedby="inputGroupPrepend" required="">
+        <div class="invalid-feedback">
+            Por favor, insira a data de nascimento
+        </div>
+    </div>
+</div>
+
 </div>
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 " style="margin-top:3%;margin-bottom:6%">
     <button class="btn btn-primary" type="button" id="cadastra_cliente">CADASTRAR</button>
@@ -106,11 +117,11 @@
                             <th scope="col">ENDEREÇO</th>
                             <th scope="col">TELEFONE</th>
                             <th scope="col">SEXO</th>
+                            <th scope="col">NASCIMENTO</th>
                             <th scope="col">AÇÕES</th>
+                            
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
                 </table>
             </div>
         </div>
@@ -178,7 +189,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">...</span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" placeholder="Informe o CPF"name='cpf_cliente_edit' maxlength="11" aria-describedby="inputGroupPrepend" required="">
+                    <input type="text" class="form-control" oninput="mascaraCpf(this)" id="validationCustomUsername" placeholder="Informe o CPF"name='cpf_cliente_edit' aria-describedby="inputGroupPrepend" required="">
                     <div class="invalid-feedback">
                     Por favor digite um cpf
                     </div>
@@ -200,7 +211,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">...</span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" name='telefone_cliente_edit' placeholder="Informe o telefone" maxlength="11" aria-describedby="inputGroupPrepend" maxlength="11">
+                    <input type="text" class="form-control" oninput="mascaraTel(this)" id="validationCustomUsername" name='telefone_cliente_edit' placeholder="Informe o telefone" aria-describedby="inputGroupPrepend" maxlength="11">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -209,7 +220,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">...</span>
                     </div>
-                    <input type="text" class="form-control" id="cliente_cep" name="cliente_cep_edit" placeholder="Informe o CEP" maxlength="8" aria-describedby="inputGroupPrepend" >
+                    <input type="text" class="form-control" oninput="mascaraCep(this)" id="cliente_cep" name="cliente_cep_edit" placeholder="Informe o CEP" aria-describedby="inputGroupPrepend" >
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -223,6 +234,15 @@
                 <option value='1'> Masculino</option>
                 <option value='0'>Feminino</option>
             </select>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <label for="validationCustomUsername">DATA DE ANIVERSÁRIO</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">...</span>
+                </div>
+                <input type="text" class="form-control" oninput="mascaraData(this)" id="cliente_data" name="data_cliente_edit" placeholder="Informe a data de nascimento" aria-describedby="inputGroupPrepend">
             </div>
         </div>
     </div>
