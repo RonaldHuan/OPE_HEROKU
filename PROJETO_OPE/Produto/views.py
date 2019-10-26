@@ -24,7 +24,6 @@ class ViewProduto():
             contador = Produto.objects.filter(nome = produto_nome , descricao = produto_descricao,tamamho=produto_tamanho,cor=produto_cor,preco=produto_preco).count()
             if(contador > 0):
                 return HttpResponseNotFound('Produto já cadastrado na base.')
-
             produto = Produto(
             nome=produto_nome,
             descricao = produto_descricao,

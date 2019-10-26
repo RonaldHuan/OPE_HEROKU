@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse,HttpResponseNotFound
 from .models import Cliente
+from .models import Produto
 from Cliente.views import ViewCliente
 from Atendente.views import ViewFuncionario
+from Produto.views import ViewProduto
 from django.contrib.auth.models import User
-from Cliente.models import Cliente
 from django.forms.models import model_to_dict
 import requests
 from django.core import serializers
@@ -16,18 +17,26 @@ class ViewPedido():
             dados_bruto = serializers.serialize('python', User.objects.all())
             funcionarios = []
             for dado in dados_bruto:
-                funcionario =   dado['fields']
+                funcionario = dado['fields']
                 funcionario['id'] = dado['pk']
                 funcionarios.append(funcionario.copy())
                 funcionario.clear()
             dados_bruto = serializers.serialize('python', Cliente.objects.all())
             clientes = []
             for dado in dados_bruto:
-                cliente =   dado['fields']
+                cliente = dado['fields']
                 cliente['id'] = dado['pk']
                 clientes.append(cliente.copy())
                 cliente.clear()
-            return render(request,"pedido/pedido.html",{"user":request.user,'atendentes':funcionarios,"clientes":clientes})
+            dados_bruto = serializers.serialize('python', Produto.objects.all())
+            produtos = []
+            for dado in dados_bruto:
+                produto = dado['fields']
+                produto['id'] = dado['pk']
+                produtos.append(produto.copy())
+                produto.clear()
+            return render(request,"pedido/pedido.html",{"user":request.user,"atendentes":funcionarios,"clientes":clientes,"produtos":produtos})
+
     def store(request):
         if request.method == 'POST':
             dados =  request.POST

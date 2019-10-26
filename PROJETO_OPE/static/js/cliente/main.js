@@ -8,6 +8,17 @@ function mascaraCpf(i){
     if (v.length == 3 || v.length == 7) i.value += ".";
         if (v.length == 11) i.value += "-";
 }
+function mascaraCnpj(t){
+    var cnpj = t.value
+    if(isNaN(cnpj[cnpj.length-1])){ // impede entrar outro caractere que não seja número
+        t.value = cnpj.substring(0, cnpj.length-1);
+        return;
+    }
+    t.setAttribute("maxlength", "18");
+    if (cnpj.length == 2 || cnpj.length == 6) t.value += ".";
+    if (cnpj.length == 10) t.value += "/";
+    if (cnpj.length == 15) t.value += "-";
+}
 function mascaraCep(c) {
     var cep = c.value;
     if(isNaN(cep[cep.length-1])){ // impede entrar outro caractere que não seja número

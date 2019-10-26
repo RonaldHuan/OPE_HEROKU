@@ -84,6 +84,13 @@ buttons: true,
   }
 ]
 });
+
+var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+$('#limpa_campos').click(function(){
+  $("input[name='nome_func']").val("");
+  $("input[id='password']").val("");
+});
+
 $('#cadastra_func').click(function(){
 
     $.ajax({
@@ -92,8 +99,8 @@ $('#cadastra_func').click(function(){
       headers: { "X-CSRFToken": csrftoken},
       data:$('#cadastra_funcionarioform').serialize()
     }).done(function(data){
-        $("input[name='nome_func']").val("")
-        $("input[id='password']").val("")
+        $("input[name='nome_func']").val("");
+        $("input[id='password']").val("");
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
