@@ -35,14 +35,14 @@ class ViewFuncionario:
     def store(request):
         if request.method == 'POST':
             data = request.POST
-            nome = data["nome_func"]
+            nome = data["nome_func"].capitalize()
             senha = data['password']
             email = data['email_atendente']
             # ve se o usuario tem acesso a admin
             admin = 1 if 'admin' in request.POST else 0
         contador = User.objects.filter(username= nome , password = senha).count()
         if(contador > 0):
-            return HttpResponseNotFound('Atendente já cadastrado na base.')
+            return HttpResponseNotFound('Atendente já cadastrado.')
         if admin == 1:
             usuario = User.objects.create_superuser(username=nome, email=email, password=senha)
             permissao = Permission.objects.get(codename='change_user')
@@ -50,7 +50,7 @@ class ViewFuncionario:
         else:
             usuario = User.objects.create_user(username=nome, email=email, password=senha)
         usuario.save()
-        return JsonResponse({'menssagem':'Atendente Cadastrado com sucesso'},content_type="application/json",status=200)
+        return JsonResponse({'menssagem':'Atendente cadastrado com sucesso'},content_type="application/json",status=200)
 
     def index(request):
         if request.method == 'GET':
@@ -68,8 +68,8 @@ class ViewFuncionario:
             funcionario = User.objects.filter(pk = id)
             if(funcionario.count() > 0):
                 funcionario.delete()
-                return JsonResponse({'menssagem':'Funcionario Excluido com sucesso'},content_type="application/json",status=200)
-            return HttpResponseNotFound('Erro interno')
+                return JsonResponse({'menssagem':'Atendente excluido com sucesso'},content_type="application/json",status=200)
+            return HttpResponseNotFound('Ops, não foi possível excluir o atendente')
 
     def show(request,id):
         if request.method == 'GET':
@@ -99,5 +99,5 @@ class ViewFuncionario:
             funcionario.is_admin=admin
             funcionario.email = funcionario_email
             funcionario.save()
-            return JsonResponse({'menssagem':f'Atendente {funcionario.username} Atualizado com sucesso'},content_type="application/json",status=200)
+            return JsonResponse({'menssagem':f'Atendente {funcionario.username} atualizado com sucesso'},content_type="application/json",status=200)
         return HttpResponseNotFound('Erro interno')

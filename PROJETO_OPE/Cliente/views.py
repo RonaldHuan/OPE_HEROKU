@@ -13,10 +13,10 @@ class ViewCliente():
     def store(request):
         if request.method == 'POST':
             dados =  request.POST
-            cliente_nome = dados['cliente_nome']
+            cliente_nome = dados['cliente_nome'].title()
             cliente_email = dados['email_cliente']
             cliente_cpf = dados['cpf_cliente']
-            cliente_endereco= dados['endereco_cliente']
+            cliente_endereco= dados['endereco_cliente'].title()
             cliente_telefone = dados['telefone_cliente']
             cliente_cep = dados['cliente_cep']
             cliente_nascimento = dados['nascimento_cliente']
@@ -38,7 +38,7 @@ class ViewCliente():
             )
             cliente.save()
 
-            return JsonResponse({'menssagem':'Cliente Cadastrado com sucesso'},content_type="application/json",status=200)
+            return JsonResponse({'menssagem':'Cliente cadastrado com sucesso'},content_type="application/json",status=200)
 
     def index(request):
         if request.method == 'GET':
@@ -56,15 +56,15 @@ class ViewCliente():
             cliente = Cliente.objects.filter(pk = id)
             if(cliente.count() > 0):
                 cliente.delete()
-                return JsonResponse({'menssagem':'Cliente Excluido com sucesso'},content_type="application/json",status=200)
+                return JsonResponse({'menssagem':'Cliente excluido com sucesso'},content_type="application/json",status=200)
             return HttpResponseNotFound('Erro interno')
 
 
     def update(request,id):
         if request.method == 'POST':
-            dados =  request.POST
+            dados = request.POST
             print(dados)
-            dados =  request.POST
+            dados = request.POST
             cliente_nome = dados['cliente_nome_edit']
             cliente_email = dados['email_cliente_edit']
             cliente_cpf = dados['cpf_cliente_edit']
@@ -86,7 +86,7 @@ class ViewCliente():
             cliente.sexo=cliente_sexo
             cliente.dt_nascimento=cliente_nascimento
             cliente.save()
-            return JsonResponse({'menssagem':f'Cliente  {cliente.nome} Atualizado com sucesso'},content_type="application/json",status=200)
+            return JsonResponse({'menssagem':f'Cliente  {cliente.nome} atualizado com sucesso'},content_type="application/json",status=200)
         return HttpResponseNotFound('Erro interno')
 
     def show(request,id):
@@ -94,7 +94,7 @@ class ViewCliente():
             dados_bruto = serializers.serialize('python', Cliente.objects.filter(pk = id))
             clientes = []
             for dado in dados_bruto:
-                cliente =   dado['fields']
+                cliente = dado['fields']
                 cliente['id'] = dado['pk']
                 clientes.append(cliente.copy())
                 cliente.clear()

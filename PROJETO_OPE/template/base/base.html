@@ -40,7 +40,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <span id="nlylli"><a class="navbar-brand" href="#">Lylli Shoes</a></span>
+                <span id="nlylli"><a class="navbar-brand" href="#">LylliShoes</a></span>
                 <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
@@ -63,7 +63,7 @@
                                     <h5 class="mb-0 text-white nav-user-name">{{ user }}</h5>
                                 </div>
 
-                                <a class="dropdown-item" href="{%url 'logout'%}"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                <a class="dropdown-item" href="{%url 'logout'%}"><i class="fas fa-power-off mr-2"></i>Sair</a>
                             </div>
                         </li>
                     </ul>
@@ -86,7 +86,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
                             <li class="nav-divider">
-                                Menu
+                                MENU DE OPÇÕES
                             </li>
                              <li class="nav-item ">
                                 <a class="nav-link active" href="/atendentes/view"><i class="fa fa-users"></i>ATENDENTES <span class="badge badge-success">6</span></a>
@@ -105,11 +105,9 @@
                                          <div id="submenu-1" class="collapse submenu" style="">
                                          </li>
                                          <li class="nav-item ">
-                                            <a class="nav-link active" href="/fornecedor/"><i class="fa fa-angle-double-right"></i>FORNECEDOR <span class="badge badge-success">6</span></a>
+                                            <a class="nav-link active" href="/fornecedor/"><i class="fa fa-truck"></i>FORNECEDORES <span class="badge badge-success">6</span></a>
                                             <div id="submenu-1" class="collapse submenu" style="">
                                             </li>
-
-
                                     </ul>
                                 </div>
                             </li>
@@ -174,7 +172,6 @@
     <!-- chartjs js-->
     <script src="{% static 'vendor/charts/charts-bundle/Chart.bundle.js'%}"></script>
     <script src="{% static 'vendor/charts/charts-bundle/chartjs.js'%}"></script>
-
     <!-- main js-->
     <script src="{% static 'libs/js/main-js.js' %}"></script>
     <!-- jvactormap js-->
@@ -183,6 +180,8 @@
     <!-- sparkline js-->
     <script src="{% static 'vendor/charts/sparkline/jquery.sparkline.js'%}"></script>
     <script src="{% static 'vendor/charts/sparkline/spark-js.js'%}"></script>
+    <script src="{% static 'js/plugins/jquery.mask.js'%}"></script>
+    <script src="{% static 'js/plugins/jquery.mask.min.js'%}"></script>
      <!-- dashboard sales js-->
     <script src="{% static 'libs/js/dashboard-sales.js'%}"></script>
     <script src="{% static 'js/atendente/atendente.js'%}"></script>

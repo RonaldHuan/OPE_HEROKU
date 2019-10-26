@@ -14,7 +14,7 @@ $(document).ready(function(){
       {'data':'id',"name":'id'},
             ],
       "language": {
-         "search": "Pesquisar:",
+         "search": "PESQUISAR:",
          'EmptyTable':"sem registro",
          'info': "Mostrar página _PAGE_ de _PAGES_",
          'paginate': {

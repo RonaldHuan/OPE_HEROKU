@@ -14,8 +14,8 @@ class ViewProduto():
     def store(request):
         if request.method == 'POST':
             dados =  request.POST
-            produto_nome = dados['produto_nome']
-            produto_descricao = dados['produto_descricao']
+            produto_nome = dados['produto_nome'].title()
+            produto_descricao = dados['produto_descricao'].capitalize()
             produto_tamanho = dados['produto_tamanho']
             produto_cor= dados['produto_cor']
             produto_preco= dados['produto_preco']

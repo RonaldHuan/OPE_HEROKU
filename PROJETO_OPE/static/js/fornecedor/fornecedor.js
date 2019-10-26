@@ -15,7 +15,7 @@ $(document).ready(function(){
       
     ],
       "language": {
-         "search": "Pesquisar:",
+         "search": "PESQUISAR:",
          'EmptyTable':"sem registro",
          'info': "Mostrar página _PAGE_ de _PAGES_",
          'paginate': {

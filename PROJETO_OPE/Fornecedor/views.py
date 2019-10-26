@@ -16,9 +16,9 @@ class ViewFornecedor():
     def store(request):
         if request.method == 'POST':
             dados =  request.POST
-            fornecedor_nome = dados['nome_fornecedor']
+            fornecedor_nome = dados['nome_fornecedor'].title()
             fornecedor_cnpj = dados['cnpj_fornecedor']
-            fornecedor_endereco = dados['endereco_fornecedor']
+            fornecedor_endereco = dados['endereco_fornecedor'].title()
             fornecedor_telefone = dados['telefone_fornecedor']
             fornecedor_email = dados['email_fornecedor']
 
@@ -34,7 +34,7 @@ class ViewFornecedor():
             )
             fornecedor.save()
 
-            return JsonResponse({'menssagem':'Fornecedor Cadastrado com sucesso'},content_type="application/json",status=200)
+            return JsonResponse({'menssagem':'Fornecedor cadastrado com sucesso'},content_type="application/json",status=200)
 
     def index(request):
         if request.method == 'GET':

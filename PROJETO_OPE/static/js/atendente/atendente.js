@@ -53,7 +53,7 @@ columns:[
         {'data':'id',"name":'id'},
         ],
         "language": {
-           "search": "Pesquisar:",
+           "search": "PESQUISAR:",
            'EmptyTable':"sem registro",
            'info': "Mostrar página _PAGE_ de _PAGES_",
            'paginate': {
@@ -216,13 +216,11 @@ var gerenciamento = function(data,type,row){
     "</div>");
 }
 var tipousuario = function(data,type,row){
-
-    if (row.is_superuser == true){
+if (row.is_superuser == true){
     return 'Administrador'
-}else{
-return 'Funcionario'
+}
+else{
+  return 'Funcionário'
 }
 }
-
-
 })

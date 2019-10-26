@@ -65,9 +65,6 @@ class ViewPedido():
 
             return JsonResponse({'menssagem':'Cliente Cadastrado com sucesso'},content_type="application/json",status=200)
 
-
-
-
     def index(request):
         if request.method == 'GET':
             dados_bruto = serializers.serialize('python', Cliente.objects.all())
