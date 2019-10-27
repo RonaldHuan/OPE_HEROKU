@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
     var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-    let tabela_cliente=$("#tabela_fornecedor");
+    let tabela_fornecedor=$("#tabela_fornecedor");
     
-	  tabela_cliente.DataTable({
+	  tabela_fornecedor.DataTable({
     ajax: '/fornecedor/index',
     columns:[
       {"data":'nome',"name":'nome'},
@@ -16,8 +16,8 @@ $(document).ready(function(){
     ],
       "language": {
          "search": "PESQUISAR:",
-         'EmptyTable':"sem registro",
-         'info': "Mostrar página _PAGE_ de _PAGES_",
+         'emptyTable':"Sem registros",
+         "info": "Mostrar página _PAGE_ de _PAGES_",
          'paginate': {
           'next':"Próximo",
           'previous':"Anterior",
@@ -69,7 +69,7 @@ $(document).ready(function(){
         title: data.menssagem
       })
       $('#Editar_fornecedor').modal('hide')
-      tabela_fornecedor. DataTable().ajax.reload();
+      tabela_fornecedor.DataTable().ajax.reload();
     },
     error: function(error){
       const Toast = Swal.mixin({
@@ -106,8 +106,8 @@ $(document).ready(function(){
               type: 'success',
               title: data.menssagem
             })
-            $('#Excluir_fornecedor').modal('hide')
-            tabela_fornecedor. DataTable().ajax.reload();
+            $('#Excluir_fornecedor').modal('hide');
+            tabela_fornecedor.DataTable().ajax.reload();
           },
           error: function(error){
             const Toast = Swal.mixin({
@@ -169,8 +169,7 @@ $(document).ready(function(){
                 type: 'success',
                 title: data.menssagem
               })
-
-         tabela_cliente. DataTable().ajax.reload();
+         tabela_fornecedor.DataTable().ajax.reload();
              },
              error: function(error){
                  console.log(error.responseText);
@@ -185,7 +184,6 @@ $(document).ready(function(){
                     type: 'error',
                     title: error.responseText
                   })
-
              }
          })
      });

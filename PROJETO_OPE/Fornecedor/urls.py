@@ -10,4 +10,5 @@ urlpatterns = [
     path('show/<id>', ViewFornecedor.show, name='show_fornecedor'),
     path('', ViewFornecedor.view, name='view_fornecedor'),
 
+
 ]
