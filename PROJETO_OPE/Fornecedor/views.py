@@ -53,7 +53,7 @@ class ViewFornecedor():
             if(fornecedor.count() > 0):
                 fornecedor.delete()
                 return JsonResponse({'menssagem':f'Fornecedor excluido com sucesso'},content_type="application/json",status=200)
-            return HttpResponseNotFound('Falha para excluir o fornecedor')
+            return HttpResponseNotFound('Ops! Não foi possível excluir o fornecedor')
 
 
     def update(request,id):
@@ -78,7 +78,7 @@ class ViewFornecedor():
             fornecedor.email = fornecedor_email
             fornecedor.save()
             return JsonResponse({'menssagem':'Atualização realizada com sucesso'},content_type="application/json",status=200)
-        return HttpResponseNotFound('Erro interno')
+        return HttpResponseNotFound('Ops! Não foi possível atualizar as informações do fornecedor')
 
     def show(request,id):
         if request.method == 'GET':

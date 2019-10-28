@@ -57,7 +57,7 @@ class ViewCliente():
             if(cliente.count() > 0):
                 cliente.delete()
                 return JsonResponse({'menssagem':'Cliente excluido com sucesso'},content_type="application/json",status=200)
-            return HttpResponseNotFound('Erro interno')
+            return HttpResponseNotFound('Ops! Não foi possível excluir o cliente')
 
 
     def update(request,id):
@@ -86,8 +86,8 @@ class ViewCliente():
             cliente.sexo=cliente_sexo
             cliente.dt_nascimento=cliente_nascimento
             cliente.save()
-            return JsonResponse({'menssagem':f'Cliente  {cliente.nome} atualizado com sucesso'},content_type="application/json",status=200)
-        return HttpResponseNotFound('Erro interno')
+            return JsonResponse({'menssagem':f'Atualização realizada com sucesso'},content_type="application/json",status=200)
+        return HttpResponseNotFound('Ops! Não foi possível atualizar as informações do cliente')
 
     def show(request,id):
         if request.method == 'GET':

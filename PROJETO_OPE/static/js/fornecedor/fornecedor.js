@@ -144,6 +144,21 @@ $(document).ready(function(){
     $("input[name='email_fornecedor']").val('');
   });
     $('#cadastra_fornecedor').click(function(){
+        if ($("input[name='nome_fornecedor']").val() == ''){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+
+          Toast.fire({
+            type: 'error',
+            title: "Complete todos os campos!"
+          });
+          return false;
+
+        }
          $.ajax({
              url: "/fornecedor/store",
              type:'POST',

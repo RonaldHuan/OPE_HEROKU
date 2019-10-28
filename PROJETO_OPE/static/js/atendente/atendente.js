@@ -43,7 +43,7 @@ $(document).on('click','#excluir_funcionario',function(){
 
 var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 let tabela_funcionario=$("#tabela_funcionario");
-tabela_funcionario. DataTable({
+tabela_funcionario.DataTable({
 ajax: '/atendentes/index',
 columns:[
 
@@ -54,7 +54,7 @@ columns:[
         ],
         "language": {
            "search": "PESQUISAR:",
-           'EmptyTable':"sem registro",
+           'EmptyTable':"Sem registro",
            'info': "Mostrar página _PAGE_ de _PAGES_",
            'paginate': {
             'next':"Próximo",
@@ -184,7 +184,7 @@ $("#destroy_funcionario").click(function(){
         title: data.menssagem
       })
       $('#Editar_funcionario').modal('hide')
-      tabela_funcionario. DataTable().ajax.reload();
+      tabela_funcionario.DataTable().ajax.reload();
     },
     error: function(error){
       const Toast = Swal.mixin({

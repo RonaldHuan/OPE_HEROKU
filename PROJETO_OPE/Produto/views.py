@@ -34,7 +34,7 @@ class ViewProduto():
             )
             produto.save()
 
-            return JsonResponse({'menssagem':f'Produto {produto.nome} Cadastrado com sucesso'},content_type="application/json",status=200)
+            return JsonResponse({'menssagem':f'Produto {produto.nome} cadastrado com sucesso'},content_type="application/json",status=200)
 
 
 
@@ -56,8 +56,8 @@ class ViewProduto():
             produto = Produto.objects.filter(pk = id)
             if(produto.count() > 0):
                 produto.delete()
-                return JsonResponse({'menssagem':'Produto Excluido com sucesso'},content_type="application/json",status=200)
-            return HttpResponseNotFound('Erro interno')
+                return JsonResponse({'menssagem':'Produto excluido com sucesso'},content_type="application/json",status=200)
+            return HttpResponseNotFound('Ops! Não foi possível excluir o produto')
 
 
     def update(request,id):
@@ -83,8 +83,8 @@ class ViewProduto():
                 produto.preco=produto_preco
                 produto.quantidade=produto_estoque
                 produto.save()
-                return JsonResponse({'menssagem':f'Cliente  {produto.nome} Atualizado com sucesso'},content_type="application/json",status=200)
-        return HttpResponseNotFound('Erro interno')
+                return JsonResponse({'menssagem':f'Atualização realizada com sucesso'},content_type="application/json",status=200)
+        return HttpResponseNotFound('Ops! Não foi possível atualizar as informações do produto')
 
     def show(request,id):
         if request.method == 'GET':

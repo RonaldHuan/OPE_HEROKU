@@ -11,5 +11,5 @@ class Pedido(models.Model):
 class Produto_Pedido(models.Model):
     produto = models.ForeignKey(Produto,on_delete=models.CASCADE)
     pedido = models.ForeignKey(Pedido,on_delete=models.CASCADE)
-    preco_venda = models.FloatField()
+    preco_venda = models.FloatField(default=0)
     qtd = models.IntegerField()

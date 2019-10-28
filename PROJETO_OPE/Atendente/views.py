@@ -69,7 +69,7 @@ class ViewFuncionario:
             if(funcionario.count() > 0):
                 funcionario.delete()
                 return JsonResponse({'menssagem':'Atendente excluido com sucesso'},content_type="application/json",status=200)
-            return HttpResponseNotFound('Ops, não foi possível excluir o atendente')
+            return HttpResponseNotFound('Ops! Não foi possível excluir o atendente')
 
     def show(request,id):
         if request.method == 'GET':
@@ -99,5 +99,5 @@ class ViewFuncionario:
             funcionario.is_admin=admin
             funcionario.email = funcionario_email
             funcionario.save()
-            return JsonResponse({'menssagem':f'Atendente {funcionario.username} atualizado com sucesso'},content_type="application/json",status=200)
-        return HttpResponseNotFound('Erro interno')
+            return JsonResponse({'menssagem':f'Atualização realizada com sucesso'},content_type="application/json",status=200)
+        return HttpResponseNotFound('Ops! Não foi possível atualizar as informações do atendente')

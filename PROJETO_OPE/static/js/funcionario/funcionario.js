@@ -18,7 +18,7 @@ $(document).ready(function(){
     ],
       "language": {
          "search": "PESQUISAR:",
-         'EmptyTable':"sem registro",
+         'EmptyTable':"Sem registro",
          'info': "Mostrar página _PAGE_ de _PAGES_",
          'paginate': {
           'next':"Próximo",
@@ -75,7 +75,7 @@ $(document).ready(function(){
         title: data.menssagem
       })
       $('#Editar_cliente').modal('hide')
-      tabela_cliente. DataTable().ajax.reload();
+      tabela_cliente.DataTable().ajax.reload();
     },
     error: function(error){
       const Toast = Swal.mixin({
@@ -113,7 +113,7 @@ $(document).ready(function(){
               title: data.menssagem
             })
             $('#Excluir_cliente').modal('hide')
-            tabela_cliente. DataTable().ajax.reload();
+            tabela_cliente.DataTable().ajax.reload();
           },
           error: function(error){
             const Toast = Swal.mixin({
@@ -130,11 +130,6 @@ $(document).ready(function(){
           }
         })
       })
-
-
-
-
-
 
     //   funcao para mostrar os botoes  excluir e editar na tela
     var gerenciamento = function(data,type,row){
@@ -188,7 +183,7 @@ $(document).ready(function(){
                 title: data.menssagem
               })
 
-         tabela_cliente. DataTable().ajax.reload();
+         tabela_cliente.DataTable().ajax.reload();
              },
              error: function(error){
                  console.log(error.responseText);
