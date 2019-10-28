@@ -7,9 +7,9 @@
 <label for="validationCustom01">NOME</label>
 <div class="input-group">
 <div class="input-group-prepend">
-<span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-angle-double-right"></i></span>
+<span class="input-group-text" id="nomep"><i class="fa fa-angle-double-right"></i></span>
 </div>
-<input type="text" class="form-control" id="validationCustomUsername" placeholder="Nome do produto" name='produto_nome' aria-describedby="inputGroupPrepend" required="">
+<input type="text" class="form-control" id="nomep" placeholder="Nome do produto" name='produto_nome' aria-describedby="inputGroupPrepend" required="">
 <div class="invalid-feedback">
 Favor, informar o nome
 </div>
@@ -33,7 +33,7 @@ Favor, informar uma descrição
 <div class="input-group-prepend">
 <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-angle-double-right"></i></span>
 </div>
-<input type="text" id="hue-demo" name='produto_cor' class="form-control demo" data-control="hue" placeholder="Informe o código da cor">
+<input type="color" style="height: 36px;" id="hue-demo" name='produto_cor' class="form-control demo" data-control="hue" placeholder="Informe o código da cor">
 <div class="invalid-feedback">
 Favor informar uma cor
 </div>
@@ -45,7 +45,7 @@ Favor informar uma cor
 <div class="input-group-prepend">
 <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-angle-double-right"></i></span>
 </div>
-<input type="text" class="form-control" id="validationCustomUsername" placeholder="Preço do produto" name='produto_preco' aria-describedby="inputGroupPrepend" required="">
+<input type="text" class="form-control" id="precoc" placeholder="Preço do produto" name='produto_preco' aria-describedby="inputGroupPrepend" required="">
 <div class="invalid-feedback">
 Favor informar um valor
 </div>
@@ -85,7 +85,7 @@ Favor, informar um tamanho
 <div class="input-group-prepend">
 <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-angle-double-right"></i></span>
 </div>
-<input type="text" class="form-control" id="validationCustomUsername" placeholder="Quantidade em estoque" name='produto_estoque' aria-describedby="inputGroupPrepend" required="">
+<input type="text" class="form-control" id="estoquec" placeholder="Quantidade em estoque" name='produto_estoque' aria-describedby="inputGroupPrepend" required="">
 <div class="invalid-feedback">
 Favor, informar o estoque
 </div>
@@ -194,7 +194,7 @@ Digite um Descricao
 <div class="input-group-prepend">
 <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-angle-double-right"></i></span>
 </div>
-<input type="text" id="hue-demo" name='produto_cor_edit' class="form-control demo" data-control="hue" value="#ff6161">
+<input type="color" id="hue-demo" style="height: 36px;" name='produto_cor_edit' class="form-control demo" data-control="hue" value="#ff6161">
 <div class="invalid-feedback">
 Digite um email
 </div>

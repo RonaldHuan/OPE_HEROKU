@@ -144,7 +144,7 @@ $(document).ready(function(){
     $("input[name='email_fornecedor']").val('');
   });
     $('#cadastra_fornecedor').click(function(){
-        if ($("input[name='nome_fornecedor']").val() == ''){
+        if ($("#nomef").val() == '' ||$("#cnpjf").val() == '' || $("#telf").val() == ''){
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -154,10 +154,9 @@ $(document).ready(function(){
 
           Toast.fire({
             type: 'error',
-            title: "Complete todos os campos!"
-          });
+            title: "Ops! preencha todos os campos."
+          })
           return false;
-
         }
          $.ajax({
              url: "/fornecedor/store",

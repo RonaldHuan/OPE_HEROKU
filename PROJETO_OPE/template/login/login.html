@@ -38,7 +38,7 @@
 
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="#"><img id="lylli" src="{% static 'images/lilly.png'%}" alt="logo"></a><span class="splash-description">Entre com suas credenciais.</span></div>
+            <div class="card-header text-center"><a href="#"><img id="lylli" src="{% static 'images/lilly.png'%}" alt="logo"></a><span class="splash-description">Informe suas credenciais.</span></div>
             <div class="card-body">
               <form method="post">
                {% csrf_token %}
@@ -72,11 +72,11 @@
          <div class="modal-content">
            <div class="modal-header" style="background: linear-gradient(45deg, #F759FF, #4D1E63);">
 
-             <h4 class="modal-title" style="color:white">Ops, ocorreu um erro!</h4>
+             <h4 class="modal-title" style="color:white">Ops! Usuário ou senha inválido.</h4>
              <button type="button" class="close" data-dismiss="modal">&times;</button>
            </div>
            <div class="modal-body">
-             <p>Usuário ou senha inválido!</p>
+             <p>Tente novamente!</p>
            </div>
            <div class="modal-footer text-center">
              <button type="button" class="btn btn-sucess" data-dismiss="modal">OK</button>

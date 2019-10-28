@@ -18,7 +18,7 @@ $(document).ready(function(){
     ],
       "language": {
          "search": "PESQUISAR:",
-         'EmptyTable':"Sem registro",
+         'emptyTable':"Sem registro",
          'info': "Mostrar página _PAGE_ de _PAGES_",
          'paginate': {
           'next':"Próximo",
@@ -155,6 +155,20 @@ $(document).ready(function(){
     $("input[name='nascimento_cliente']").val('');
   });
     $('#cadastra_cliente').click(function(){
+        if ($("#nomec").val() == '' || $("#cpfc").val() == '' || $("#datac").val() == ''){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+    
+          Toast.fire({
+            type: 'error',
+            title: "Ops! preencha todos os campos."
+          })
+          return false;
+        }
          $.ajax({
              url: "/clientes/store",
              type:'POST',

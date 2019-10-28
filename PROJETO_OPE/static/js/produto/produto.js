@@ -15,7 +15,7 @@ $(document).ready(function(){
             ],
       "language": {
          "search": "PESQUISAR:",
-         'EmptyTable':"Sem registro",
+         'emptyTable':"Sem registro",
          'info': "Mostrar página _PAGE_ de _PAGES_",
          'paginate': {
           'next':"Próximo",
@@ -142,6 +142,20 @@ $(document).ready(function(){
     $("input[name='telefone_cliente]").val('');
   });
     $('#cadastra_produto').click(function(){
+        if ($("#nomep").val() == '' || $("#estoquec").val() == '' || $("#precoc").val() == ''){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          });
+    
+          Toast.fire({
+            type: 'error',
+            title: "Ops! preencha todos os campos."
+          })
+          return false;
+        }
          $.ajax({
              url: "/produtos/store",
              type:'POST',
@@ -169,7 +183,7 @@ $(document).ready(function(){
                 title: data.menssagem
               })
 
-         tabela_cliente.DataTable().ajax.reload();
+              tabela_produto.DataTable().ajax.reload();
              },
              error: function(error){
                  console.log(error.responseText);

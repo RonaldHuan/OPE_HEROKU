@@ -64,7 +64,7 @@ class ViewPedido():
             pedido.save()
             for c in range(0,len(produtos),3):
                 produtos_model=Produto.objects.get(pk = produtos[c][0])
-                produtos_peido = Produto_Pedido.objects.create(produto=produtos_model, pedido =pedido,qtd =produtos[c+1][0])
+                produtos_pedido = Produto_Pedido.objects.create(produto=produtos_model, pedido =pedido,qtd =produtos[c+1][0],preco_venda =produtos[c+2][0])
             return JsonResponse({'menssagem':'Pedido Cadastrado com sucesso'},content_type="application/json",status=200)
 
 
@@ -88,6 +88,7 @@ class ViewPedido():
                     protudo_model = Produto.objects.get(pk = produto['pk'])
                     relacionamento= Produto_Pedido.objects.filter(pedido = pedido_model,produto = protudo_model).last()
                     produto_dic['qtd_venda'] = relacionamento.qtd
+                    produto_dic['preco_venda'] = relacionamento.preco_venda
                     produtos.append(produto_dic.copy())
                     produto_dic.clear()
                 pedido['produtos'] = produtos
@@ -99,7 +100,7 @@ class ViewPedido():
     def destroy(request, id):
         if request.method == 'DELETE':
             pedido = Pedido.objects.filter(pk = id)
-            if(cliente.count() > 0):
+            if(pedido.count() > 0):
                 pedido.delete()
                 return JsonResponse({'menssagem':'Pedido Excluido com sucesso'},content_type="application/json",status=200)
             return HttpResponseNotFound('Erro interno')
@@ -145,6 +146,7 @@ class ViewPedido():
                     protudo_model = Produto.objects.get(pk = produto['pk'])
                     relacionamento= Produto_Pedido.objects.filter(pedido = pedido_model,produto = protudo_model).last()
                     produto_dic['qtd_venda'] = relacionamento.qtd
+                    produto_dic['preco_venda'] = relacionamento.preco_venda
                     produtos.append(produto_dic.copy())
                     produto_dic.clear()
                 pedido['produtos'] = produtos
