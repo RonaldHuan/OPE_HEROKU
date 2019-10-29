@@ -35,7 +35,7 @@ class ViewFuncionario:
     def store(request):
         if request.method == 'POST':
             data = request.POST
-            nome = data["nome_func"].capitalize()
+            nome = data["nome_func"]
             senha = data['password']
             email = data['email_atendente']
             # ve se o usuario tem acesso a admin
